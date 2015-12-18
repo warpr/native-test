@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
+#include <stdlib.h>
 
 #include "functions.h"
 
@@ -80,11 +82,18 @@ NAN_METHOD(MyObject::PlusOne) {
 }
 
 NAN_METHOD(kunoTest) {
-    std::string line = "Hello from functions.cc!";
+    std::ostringstream output;
 
-    std::ofstream output ("/tmp/output.txt");
-    output << line << std::endl;
-    output.close ();
+    srand(time(NULL));
+    int number = rand() % 64 + 1;
 
-    info.GetReturnValue().Set(true);
+    output << "Hello from functions.cc! Here is a number: " << number;
+
+    std::string line = output.str();
+    std::ofstream outputFile ("/tmp/output.txt");
+
+    outputFile << line << std::endl;
+    outputFile.close ();
+
+    info.GetReturnValue().Set(Nan::New(line).ToLocalChecked());
 }

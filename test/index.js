@@ -2,10 +2,11 @@ var nativeExtension = require('../');
 var assert = require('assert');
 
 describe('native function test', function() {
-    it('should return true', function () {
+    it('should return a string', function () {
         var t = nativeExtension.kunoTest();
-        assert.equal(typeof t, 'boolean');
-        assert.equal(t, true);
+        assert.equal(typeof t, 'string');
+        var parts = t.split('!');
+        assert.equal(parts[0], 'Hello from functions.cc');
     });
 });
 
