@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <ctime>
 #include <stdlib.h>
 
 #include "functions.h"
