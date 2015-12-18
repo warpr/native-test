@@ -1,6 +1,13 @@
 var nativeExtension = require('../');
 var assert = require('assert');
 
+describe('native function test', function() {
+    it('should return true', function () {
+        var t = nativeExtension.kunoTest();
+        assert.equal(typeof t, 'boolean');
+        assert.equal(t, true);
+    });
+});
 
 describe('native extension', function() {
   it('should export a wrapped object', function() {
@@ -45,5 +52,5 @@ describe('native extension', function() {
   it('should export function that calls a callback', function(done) {
     nativeExtension.callback(done);
   });
-  
+
 });

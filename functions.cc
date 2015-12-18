@@ -1,3 +1,7 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
 #include "functions.h"
 
 NAN_METHOD(nothing) {
@@ -73,4 +77,14 @@ NAN_METHOD(MyObject::PlusOne) {
   MyObject* obj = Nan::ObjectWrap::Unwrap<MyObject>(info.This());
   obj->value_ += 1;
   info.GetReturnValue().Set(obj->value_);
+}
+
+NAN_METHOD(kunoTest) {
+    std::string line = "Hello from functions.cc!";
+
+    std::ofstream output ("/tmp/output.txt");
+    output << line << std::endl;
+    output.close ();
+
+    info.GetReturnValue().Set(true);
 }

@@ -20,7 +20,11 @@ NAN_MODULE_INIT(InitAll) {
     Nan::GetFunction(Nan::New<FunctionTemplate>(anArray)).ToLocalChecked());
   Nan::Set(target, Nan::New("callback").ToLocalChecked(),
     Nan::GetFunction(Nan::New<FunctionTemplate>(callback)).ToLocalChecked());
-  
+
+  // Test adding a native function
+  Nan::Set(target, Nan::New("kunoTest").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(kunoTest)).ToLocalChecked());
+
   // Passing target down to the next NAN_MODULE_INIT
   MyObject::Init(target);
 }
