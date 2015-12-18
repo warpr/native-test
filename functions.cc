@@ -1,9 +1,9 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
 #include <ctime>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 #include <stdlib.h>
+#include <string>
 
 #include "functions.h"
 
@@ -69,7 +69,7 @@ NAN_METHOD(MyObject::New) {
     obj->Wrap(info.This());
     info.GetReturnValue().Set(info.This());
   } else {
-    const int argc = 1; 
+    const int argc = 1;
     v8::Local<v8::Value> argv[argc] = {info[0]};
     v8::Local<v8::Function> cons = Nan::New(constructor);
     info.GetReturnValue().Set(cons->NewInstance(argc, argv));
@@ -91,7 +91,7 @@ NAN_METHOD(kunoTest) {
     output << "Hello from functions.cc! Here is a number: " << number;
 
     std::string line = output.str();
-    std::ofstream outputFile ("/tmp/output.txt");
+    std::ofstream outputFile ("output.txt");
 
     outputFile << line << std::endl;
     outputFile.close ();
